@@ -7,14 +7,14 @@
 
 import os
 import sys
-import execjs 
-
+import execjs  
+ 
 INDIR = sys.argv[1]
 OUTDIR = sys.argv[2]
 out_str = ""
 for folder, subs, files in os.walk(INDIR):
     for filename in files:
-        with open(os.path.join(folder, filename), 'r') as src:
+        with open(os.path.join(folder, filename), 'r') as src: 
             out_str += src.read() + "\n"
 
 
@@ -56,4 +56,4 @@ if os.path.isfile(OUTDIR):
     os.remove(OUTDIR)
 
 with open(OUTDIR, 'a') as out:
-    out.write(babel.transpile(original_source))
+    out.write(babel.transpile(original_source).encode('cp1252').decode('utf-8'))
