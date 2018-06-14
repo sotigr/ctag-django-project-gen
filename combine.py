@@ -56,4 +56,7 @@ if os.path.isfile(OUTDIR):
     os.remove(OUTDIR)
 
 with open(OUTDIR, 'a') as out:
-    out.write(babel.transpile(original_source).encode('cp1252').decode('utf-8'))
+    try:
+        out.write(babel.transpile(original_source).encode('cp1252').decode('utf-8'))
+    except Exception:
+        out.write(original_source)
