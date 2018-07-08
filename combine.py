@@ -55,8 +55,7 @@ original_source = out_str
 if os.path.isfile(OUTDIR):
     os.remove(OUTDIR)
 
-with open(OUTDIR, 'a') as out:
-    try:
-        out.write(babel.transpile(original_source).encode('cp1252').decode('utf-8'))
-    except Exception:
-        out.write(original_source)
+js_out = babel.transpile(original_source).encode('utf-8-sig')
+ 
+with open(OUTDIR, 'wb') as f:
+	f.write(js_out) 

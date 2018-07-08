@@ -43,8 +43,7 @@ copyfile("combine.py", root_path + "combine.py")
 
 
 print("Creating static directory")
-#Making static
-os.makedirs(static_path)
+#Making static 
 os.makedirs(static_path + "scripts/project/")
 
 create_file(static_path + "scripts/project/main.js", '''
@@ -72,8 +71,6 @@ launch_json = '''
 
          "args": [
              "runserver",
-             "--noreload",
-             "--nothreading"
          ],
 
          "debugOptions": [
@@ -100,7 +97,8 @@ task_json = '''
     "tasks": [ 
         {
             "taskName": "babel_render",
-            "isShellCommand": true
+            "isShellCommand": true,
+            "isBuildCommand": true
         }
     ]
 }
