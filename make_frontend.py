@@ -55,22 +55,25 @@ document.write(getMessage());
 vscode_path = root_path + ".vscode/"
 os.makedirs(vscode_path)
 
-python_venv = os.path.dirname(os.path.realpath(__file__)) + "/" + root_path + "bin/python3"
-
+#python_venv = os.path.dirname(os.path.realpath(__file__)) + "/" + root_path + "bin/python3"
+python_venv = "bin/python3"
 launch_json = '''
  {
      "version": "0.2.0",
-     "configurations": [{
+     "configurations": [ 
+         {
          "name": "Django",
-         "type": "python",
+         "type": "pythonExperimental",
          "request": "launch",
          "preLaunchTask": "babel_render",
          "program": "${workspaceFolder}/manage.py",
 
-         "pythonPath": "'''+python_venv+'''",
+         "pythonPath": "bin/python3",
 
          "args": [
              "runserver",
+             "--noreload",
+             "--nothreading"
          ],
 
          "debugOptions": [
@@ -79,7 +82,7 @@ launch_json = '''
          ]
      }],
      "compounds": [],
- }
+ } 
 '''
 
 task_json = ''' 
